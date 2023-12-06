@@ -99,8 +99,21 @@ Dans un terminal, exécuter la commande suivante :
 node --watch server.js # Hot reload, redémarre le serveur à chaque modification
 ```
 
-Glossaire : 
+## Glossaire
 
-- Route
-- Microservice
-- API REST
+- Routes : Les routes sont les chemins par lesquelles l'application accèdent aux données
+- Microservice : Gestion par petites briques de code (Une base de données, un proxy, un serveur de requêtes et réponses, etc.)
+- API REST : Interface de programmation d'application.
+- API : Application Programming Interface.
+
+## Sitographie
+
+- [Node.js](https://nodejs.org/en/)
+- [Fastify](https://www.fastify.io/)
+- [POSTMAN](https://www.postman.com/)
+
+Fastify est une manière de 
+
+## Bibliographie
+
+- *RESTful Web API Patterns and Practices Cookbook*, Mike Amundsen, O'Reilly Media, Inc., 2023

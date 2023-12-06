@@ -4,30 +4,6 @@ const fastify = Fastify({
   logger: true
 });
 
-fastify.get('/', async (request, reply) => {
-  console.log(request);
-  return { hello: 'world' }
-});
-
-fastify.post('/reservation', async (request, reply) => {
-  // const {nbOfSeats} = request.body;
-  const nbOfSeats = request.body.nbOfSeats;
-
-  return {
-    data: {
-      dates: {
-        "6-12-2023": [
-          "12h00-14h00",
-          "13h00-15h00"
-        ],
-        "7-12-2023": [
-          "13h00-15h00"
-        ]
-      }
-    }
-  }
-});
-
 // TODO: Implement signup
 fastify.post('/signup', async (request, reply) => {
   return {"msg": "WIP"}
@@ -48,6 +24,35 @@ fastify.post('/auth', async (request, reply) => {
     data: "ok",
     url : {"reservation": "http://localhost:3000/reservation"}
   }
+});
+
+fastify.post("/reservation", (request, reply) => {
+  const { tableId, nbOfSeats, userId, schedule, comment} = request.body;
+
+  return {"reservation": "ok"};
+
+});
+
+fastify.get('/ingredients', async (request, reply) => {
+
+  const ingredients = [
+    "Pain",
+    "Viande",
+    "Salade",
+    "Tomate",
+    "Oignon",
+    "Cornichon",
+  ]
+
+const sort = request.query.sort;
+
+if (sort === "alpha") {
+  return {ingredients: ingredients.sort()};
+}
+
+console.log(request);
+
+return {request: ingredients};
 });
 
 /**
