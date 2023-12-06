@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@fastify/cors": "^8.4.2",
+    "fastify": "^4.24.3"
+  },
+  "type": "module"
+}

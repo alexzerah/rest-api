@@ -6,6 +6,7 @@ const fastify = Fastify({
 });
 
 fastify.get('/', async (request, reply) => {
+  console.log(request);
   return { hello: 'world' }
 });
 
