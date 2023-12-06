@@ -98,4 +98,9 @@ Dans un terminal, exécuter la commande suivante :
 ```bash
 node --watch server.js # Hot reload, redémarre le serveur à chaque modification
 ```
-```
+
+Glossaire : 
+
+- Route
+- Microservice
+- API REST
