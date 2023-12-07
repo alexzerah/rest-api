@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@fastify/cors": "^8.4.2",
+    "@fastify/jwt": "^7.2.4",
     "fastify": "^4.24.3",
     "jsonwebtoken": "^9.0.2"
   },

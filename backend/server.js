@@ -1,34 +1,23 @@
 import Fastify from 'fastify';
-import jwt from 'jsonwebtoken';
+import jwt from '@fastify/jwt';
 
 const fastify = Fastify({
   logger: true
 });
+
+fastify.register(jwt, {
+  secret: "supersecret"
+})
 
 // TODO: Implement signup
 fastify.post('/signup', async (request, reply) => {
   return {"msg": "WIP"}
 });
 
-fastify.post('/auth', async (request, reply) => {
-  const { username, password } = request.body;
-
-  if (username !== "Alex" || password !== "mot de passe compliqué") {
-    return {
-      error: "Identifiants invalides",
-      url: {
-        signup: "http://localhost:3000/signup",
-      }
-    }
-  }
-  return {
-    data: "ok",
-    url : {"reservation": "http://localhost:3000/reservation"}
-  }
-});
-
 fastify.post('/login', async (request, reply) => {
-  const {email, password} = request.body;
+  const {password} = request.body;
+
+  const email = request.body.email.toLowerCase();
 
   if (email !== "alex@mail.com" || password !== "mot de passe compliqué") {
     return {
@@ -39,7 +28,22 @@ fastify.post('/login', async (request, reply) => {
     }
   }
 
-  return {data: "ok"}
+  const token = fastify.jwt.sign({email});
+
+  return {data: token}
+});
+
+fastify.addHook("onRequest", async (request, reply) => {
+
+  if (request.url === "/login" || request.url === "/signup") {
+    return;
+  }
+
+  try {
+    await request.jwtVerify();
+  } catch (err) {
+    reply.send(err);
+    }
 });
 
 fastify.post("/reservation", (request, reply) => {
