@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import jwt from 'jsonwebtoken';
 
 const fastify = Fastify({
   logger: true
@@ -24,6 +25,21 @@ fastify.post('/auth', async (request, reply) => {
     data: "ok",
     url : {"reservation": "http://localhost:3000/reservation"}
   }
+});
+
+fastify.post('/login', async (request, reply) => {
+  const {email, password} = request.body;
+
+  if (email !== "alex@mail.com" || password !== "mot de passe compliqué") {
+    return {
+      error: "Identifiants invalides",
+      url: {
+        signup: "http://localhost:3000/signup",
+      }
+    }
+  }
+
+  return {data: "ok"}
 });
 
 fastify.post("/reservation", (request, reply) => {
