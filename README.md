@@ -37,6 +37,8 @@ Sources :
 
 Dans un terminal, exécuter la commande suivante :
 
+### Etapes 1
+
 ```js
 npm i fastify
 ```
@@ -50,6 +52,18 @@ npm i fastify
 - `package.json` : contient les informations du projet et les dépendances
 - `package-lock.json` : contient les informations des dépendances
 - `node_modules` : contient les modules installés
+
+### Etapes 2
+
+Ajouter le code suivant dans le fichier `package.json` :
+
+```json
+{
+  "type": "module"
+}
+```
+
+### Etapes 3
 
 ## Créer un serveur
 
@@ -91,13 +105,34 @@ start();
 - `fastify.listen` : Méthode pour démarrer le serveur
 - `port: 3000` : Port d'écoute du serveur
 
-## Lancer le serveur
+### Etape 4 - Lancer le serveur
 
 Dans un terminal, exécuter la commande suivante :
 
 ```bash
+# Version 20+
 node --watch server.js # Hot reload, redémarre le serveur à chaque modification
+
+# Version  >20
+node server.js # Vous devez relancer le serveur à chaque modification
 ```
+
+### Etape 5 - Tester le serveur
+
+Sur POSTMAN, aller sur l'URL suivante : `http://localhost:3000/`
+
+## Outils
+
+- IDE : VSCODE...
+- Navigateur : Chrome, Firefox, Edge, Safari...
+- Test d'API : POSTMAN...
+- Terminal : Invite de commande
+- Schéma : Draw.io, papier...
+
+### Technologies
+
+- Serveur / Framwork : Node.js / Fastify, Python / Django, Cloud / Solutions, PHP / Laravel...
+- 
 
 ## Glossaire
 
@@ -112,8 +147,14 @@ node --watch server.js # Hot reload, redémarre le serveur à chaque modificatio
 - [Fastify](https://www.fastify.io/)
 - [POSTMAN](https://www.postman.com/)
 
-Fastify est une manière de 
+## Documents
+
+- [OWASP Top 10 - 2023](https://owasp.org/www-chapter-singapore/assets/presos/OWASP_SG_6_Sep_2023_The_new_OWASP_Top_10_API_Security_2023.pdf)
 
 ## Bibliographie
 
 - *RESTful Web API Patterns and Practices Cookbook*, Mike Amundsen, O'Reilly Media, Inc., 2023
+
+## Références
+
+- Markdown
