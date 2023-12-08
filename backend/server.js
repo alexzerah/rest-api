@@ -9,9 +9,9 @@ const fastify = Fastify({
 fastify.register(fastifySwagger, {
   swagger: {
     info: {
-      title: 'Test swagger',
+      title: 'API REST ORSYS',
       description: 'Testing the Fastify swagger API',
-      version: '0.1.0'
+      version: '1.0.0'
     },
     externalDocs: {
       url: 'https://swagger.io',
@@ -98,7 +98,7 @@ fastify.route({
 fastify.post('/route', {
   schema: {
     description: 'post some data',
-    summary: 'qwerty',
+    summary: 'Récupère un ingrédient',
     security: [{ apiKey: [] }],
     body: {
       type: 'object',
@@ -159,8 +159,8 @@ fastify.register(async function (fastify) {
 
   fastify.post('/route/:id', {
     schema: {
-      description: 'post some data',
-      summary: 'qwerty',
+      description: "L'utilisateur envoie une préférence et reçoit un ingrédient",
+      summary: 'récupère un ingrédient ',
       security: [{ apiKey: [] }],
       body: {
         type: 'object',
@@ -178,7 +178,22 @@ fastify.register(async function (fastify) {
         }
       }
     }
-  }, (req, reply) => { reply.send({ hello: `Hello ${req.body.hello}` }) 
+  }, (req, reply) => {
+    if (req.body.preference === "fruit") {
+      reply.send({ 
+     
+        data: "citron" 
+    })
+    } else if (req.body.preference === "légume") {
+      reply.send({ 
+     
+        data: "carotte" 
+    }) 
+    } else {
+      reply.send({
+        data: "pates"
+      })
+    }
   })
 
   fastify.get('/route/:id', {
