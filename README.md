@@ -22,6 +22,18 @@
   - [Documents](#documents)
   - [Bibliographie](#bibliographie)
   - [Références](#références)
+  - [Veille technologique](#veille-technologique)
+    - [Revues 🇺🇸](#revues-)
+    - [Revues 🇫🇷](#revues--1)
+  - [Programmation](#programmation)
+  - [Bonnes pratiques](#bonnes-pratiques)
+  - [Cyber / SI](#cyber--si)
+    - [API / No code /Low code](#api--no-code-low-code)
+    - [IA](#ia)
+    - [Blockchain](#blockchain)
+    - [Creative](#creative)
+    - [Culture tech / startup](#culture-tech--startup)
+    - [Keynotes](#keynotes)
 
 
 ## Qu'est-ce qu'une API ?
@@ -364,3 +376,80 @@ fastify.register(async function (fastify) {
 ## Références
 
 - Markdown
+
+## Veille technologique
+
+### Revues 🇺🇸
+
+- [L'Adn](https://www.ladn.eu/)
+- [The Verge](https://www.theverge.com/)
+- [Techcrunch](https://techcrunch.com)
+- [Wired](https://www.wired.com/)
+- [Command Line](https://www.theverge.com/command-line-newsletter)
+- [Polygon](https://www.polygon.com/)
+
+### Revues 🇫🇷
+
+- [L'informaticien](https://www.linformaticien.com/)
+- [Programmez](https://www.programmez.com/)
+- [iCreate](https://www.icreate.fr/)
+- [Le Monde Informatique](https://www.lemondeinformatique.fr/)
+
+## Programmation
+
+- [Fireship](https://fireship.io/)
+
+## Bonnes pratiques
+
+- [Refactoring.guru](https://refactoring.guru/)
+
+## Cyber / SI
+
+- [ANSSI](https://www.ssi.gouv.fr/)
+
+### API / No code /Low code
+
+- [API Days](https://www.apidays.co/)
+- [Zapier](https://zapier.com/)
+- [Make](https://www.make.com/)
+
+### IA
+
+- Yann LeCun
+- [Deepmind](https://deepmind.google/)
+- [Krea IA](https://www.krea.ai/)
+- [Grok](https://grok.x.ai/)
+- [AWS Stable diffusion](https://aws.amazon.com/fr/what-is/stable-diffusion/)
+- [Stable Diffusion France](https://www.stable-diffusion-france.fr/)
+- [Replicate](https://replicate.ai/)
+- [Hugging Face](https://huggingface.co/)
+- [v0](https://v0.dev/)
+- [Github Copilot](https://copilot.github.com/)
+- [https://hu.ma.ne/aipin](https://hu.ma.ne/aipin)
+
+### Blockchain
+
+- [Hasheur](https://www.youtube.com/c/Hasheur/)
+- [Cairo](https://www.cairo-lang.org/)
+- [Solana](https://solana.com/)
+- [Ethereum](https://ethereum.org/en/developers/)
+
+### Creative
+
+- [Locomotive](https://locomotive.ca/)
+- [awwwards](https://awwwards.com)
+
+### Culture tech / startup
+
+- [Y Combinator](https://www.ycombinator.com/)
+- [Product Hunt](https://www.producthunt.com/)
+
+### Keynotes
+
+- [WWDC](https://developer.apple.com/wwdc23/)
+- [Google I/O](https://events.google.com/io/)
+- [Microsoft Build](https://mybuild.microsoft.com/home)
+- [Meta F8](https://www.f8.com/)
+- [AWS reinvent](https://reinvent.awsevents.com/keynotes/)
+
+[🔝](#rest-api-orsys)
