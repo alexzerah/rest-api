@@ -7,5 +7,6 @@
     "fastify": "^4.24.3",
     "fastify-swagger": "^5.2.0",
     "jsonwebtoken": "^9.0.2"
-  }
+  },
+  "type": "module"
 }

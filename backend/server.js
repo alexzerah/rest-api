@@ -1,6 +1,12 @@
-const fastify = require('fastify')()
+import Fastify from 'fastify';
+import fastifySwagger from '@fastify/swagger';
+import fastifySwaggerUI from '@fastify/swagger-ui';
 
-fastify.register(require('@fastify/swagger'), {
+const fastify = Fastify({
+  logger: true
+});
+
+fastify.register(fastifySwagger, {
   swagger: {
     info: {
       title: 'Test swagger',
@@ -41,7 +47,7 @@ fastify.register(require('@fastify/swagger'), {
   }
 })
 
-fastify.register(require('@fastify/swagger-ui'), {
+fastify.register(fastifySwaggerUI), {
   routePrefix: '/documentation',
   uiConfig: {
     docExpansion: 'full',
@@ -55,7 +61,7 @@ fastify.register(require('@fastify/swagger-ui'), {
   transformStaticCSP: (header) => header,
   transformSpecification: (swaggerObject, request, reply) => { return swaggerObject },
   transformSpecificationClone: true
-})
+};
 
 fastify.addSchema({
   $id: 'some',
@@ -80,14 +86,6 @@ fastify.route({
             type: 'string'
           },
           minItems: 1,
-          //
-          // Note that this is an Open API version 2 configuration option.  The
-          // options changed in version 3. The plugin currently only supports
-          // version 2 of Open API.
-          //
-          // Put `collectionFormat` on the same property which you are defining
-          // as an array of values. (i.e. `collectionFormat` should be a sibling
-          // of the `type: "array"` specification.)
         }
       }
     }

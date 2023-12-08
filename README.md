@@ -1,5 +1,29 @@
 # REST API ORSYS
 
+- [REST API ORSYS](#rest-api-orsys)
+  - [Qu'est-ce qu'une API ?](#quest-ce-quune-api-)
+  - [Gérer une API théorique](#gérer-une-api-théorique)
+  - [Installation (Fastify)](#installation-fastify)
+    - [Etapes 1](#etapes-1)
+    - [Etapes 2](#etapes-2)
+    - [Etapes 3](#etapes-3)
+  - [Créer un serveur](#créer-un-serveur)
+    - [Etape 4 - Lancer le serveur](#etape-4---lancer-le-serveur)
+    - [Etape 5 - Tester le serveur](#etape-5---tester-le-serveur)
+  - [Authentification](#authentification)
+    - [1 - Créer une route login](#1---créer-une-route-login)
+    - [2 - Importer le module jwt](#2---importer-le-module-jwt)
+  - [Swagger](#swagger)
+    - [1 - Installer le module swagger](#1---installer-le-module-swagger)
+  - [Outils](#outils)
+    - [Technologies](#technologies)
+  - [Glossaire](#glossaire)
+  - [Sitographie](#sitographie)
+  - [Documents](#documents)
+  - [Bibliographie](#bibliographie)
+  - [Références](#références)
+
+
 ## Qu'est-ce qu'une API ?
 
 Une API (Application Programming Interface) est un ensemble de fonctions et de procédures qui permet à des applications de communiquer entre elles.
@@ -142,7 +166,6 @@ fastify.post('/login', async (request, reply) => {
 });
 ```
 
-
 ### 2 - Importer le module jwt
 
 ```bash
@@ -159,7 +182,151 @@ fastify.register(jwt, {
 })
 ```
 
-### 2 - 
+## Swagger
+
+### 1 - Installer le module swagger
+
+```bash
+npm i @fastify/swagger
+npm i @fastify/swagger-ui
+```
+
+```js
+fastify.register(fastifySwagger, {
+  swagger: {
+    info: {
+      title: 'Test swagger',
+      description: 'Testing the Fastify swagger API',
+      version: '0.1.0'
+    },
+    externalDocs: {
+      url: 'https://swagger.io',
+      description: 'Find more info here'
+    },
+    host: 'localhost:3000',
+    schemes: ['http'],
+    consumes: ['application/json'],
+    produces: ['application/json'],
+    tags: [
+      { name: 'user', description: 'User related end-points' },
+      { name: 'code', description: 'Code related end-points' }
+    ],
+    definitions: {
+      User: {
+        type: 'object',
+        required: ['id', 'email'],
+        properties: {
+          id: { type: 'string', format: 'uuid' },
+          firstName: { type: 'string' },
+          lastName: { type: 'string' },
+          email: {type: 'string', format: 'email' }
+        }
+      }
+    },
+    securityDefinitions: {
+      apiKey: {
+        type: 'apiKey',
+        name: 'apiKey',
+        in: 'header'
+      }
+    }
+  }
+})
+```
+
+```js
+fastify.register(fastifySwaggerUI), {
+  routePrefix: '/documentation',
+  uiConfig: {
+    docExpansion: 'full',
+    deepLinking: false
+  },
+  uiHooks: {
+    onRequest: function (request, reply, next) { next() },
+    preHandler: function (request, reply, next) { next() }
+  },
+  staticCSP: true,
+  transformStaticCSP: (header) => header,
+  transformSpecification: (swaggerObject, request, reply) => { return swaggerObject },
+  transformSpecificationClone: true
+};
+```
+
+```js
+fastify.addSchema({
+  $id: 'some',
+  type: 'object',
+  properties: {
+    some: { type: 'string' }
+  }
+})
+```
+
+```js
+fastify.route({
+  method: 'GET',
+  url: '/',
+  schema: {
+    querystring: {
+      type: 'object',
+      required: ['fields'],
+      additionalProperties: false,
+      properties: {
+        fields: {
+          type: 'array',
+          items: {
+            type: 'string'
+          },
+          minItems: 1,
+        }
+      }
+    }
+  },
+  handler (request, reply) {
+    reply.send(request.query.fields)
+  }
+})
+```
+
+```js
+fastify.register(async function (fastify) {
+  fastify.put('/route/:id', {
+    schema: {
+      description: 'post some data',
+      tags: ['user', 'code'],
+      summary: 'qwerty',
+      security: [{ apiKey: [] }],
+      body: {
+        type: 'object',
+        properties: {
+          hello: { type: 'string' },
+          obj: {
+            type: 'object',
+            properties: {
+              some: { type: 'string' }
+            }
+          }
+        }
+      },
+      response: {
+        201: {
+          description: 'Succesful response',
+          type: 'object',
+          properties: {
+            hello: { type: 'string' }
+          }
+        },
+        default: {
+          description: 'Default response',
+          type: 'object',
+          properties: {
+            foo: { type: 'string' }
+          }
+        }
+      }
+    }
+  }, (req, reply) => { reply.send({ hello: `Hello ${req.body.hello}` }) })
+```
 
 ## Outils
 
@@ -172,7 +339,6 @@ fastify.register(jwt, {
 ### Technologies
 
 - Serveur / Framwork : Node.js / Fastify, Python / Django, Cloud / Solutions, PHP / Laravel...
-- 
 
 ## Glossaire
 
