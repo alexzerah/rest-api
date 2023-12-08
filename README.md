@@ -121,6 +121,46 @@ node server.js # Vous devez relancer le serveur à chaque modification
 
 Sur POSTMAN, aller sur l'URL suivante : `http://localhost:3000/`
 
+## Authentification
+
+### 1 - Créer une route login
+
+```js
+fastify.post('/login', async (request, reply) => {
+  const {email, password} = request.body;
+
+  if (email !== "alex@mail.com" || password !== "mot de passe compliqué") {
+    return {
+      error: "Identifiants invalides",
+      url: {
+        signup: "http://localhost:3000/signup",
+      }
+    }
+  }
+
+  return {data: "ok"}
+});
+```
+
+
+### 2 - Importer le module jwt
+
+```bash
+npm i @fastify/jwt
+```
+
+```js
+import FastifyJWT from '@fastify/jwt';
+```
+
+```js
+fastify.register(jwt, {
+  secret: "supersecret"
+})
+```
+
+### 2 - 
+
 ## Outils
 
 - IDE : VSCODE...
