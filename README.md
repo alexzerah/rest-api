@@ -116,7 +116,14 @@ Sources :
 
 ## Cyber / SI
 
+TODO:
+
 - [ANSSI](https://www.ssi.gouv.fr/)
+- Flipper Zéro
+- Sherlock
+- Georges Hotz
+- [HackerOne](https://www.hackerone.com/)
+- roadmaps.sh cyber
 
 ### API / No code /Low code
 
